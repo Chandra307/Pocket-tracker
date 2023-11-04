@@ -26,7 +26,7 @@ document.querySelector('#report').onclick = async (e) => {
         //     <th>Category</th><th>Expense <br/>(in ₹)</th></tr>`;
         if (prevElement.id === 'month') {
             const month = prevElement.value;
-            const { data: { expenses, amount } } = await axios.get(`http://13.48.13.12:3000/user/monthlyReport?month=${month}`, { headers: { "Authorization": token } });
+            const { data: { expenses, amount } } = await axios.get(`http://13.48.13.12/user/monthlyReport?month=${month}`, { headers: { "Authorization": token } });
             console.log(expenses, amount);
             document.getElementById('daily').innerHTML = `<tr><th>Date</th><th>Description</th>
             <th>Category</th><th>Expense (in ₹)</th></tr>`;
@@ -44,7 +44,7 @@ document.querySelector('#report').onclick = async (e) => {
             //     }
             //     console.log(prevElement.type, prevElement.value);
             const date = document.getElementById('date').value;
-            const { data: { expenses, amount } } = await axios.get(`http://13.48.13.12:3000/user/dailyReport?date=${date}`, { headers: { "Authorization": token } });
+            const { data: { expenses, amount } } = await axios.get(`http://13.48.13.12/user/dailyReport?date=${date}`, { headers: { "Authorization": token } });
             console.log(date, expenses, amount);
             
             document.getElementById('daily').innerHTML = `<tr><th>#</th><th>Description</th>
@@ -60,7 +60,7 @@ document.querySelector('#report').onclick = async (e) => {
         else {
             const start = document.getElementById('start').value;
             const end = document.getElementById('end').value;
-            const { data: { expenses, amount } } = await axios.get(`http://13.48.13.12:3000/user/weeklyReport?start=${start}&end=${end}`, { headers: { "Authorization": token } });
+            const { data: { expenses, amount } } = await axios.get(`http://13.48.13.12/user/weeklyReport?start=${start}&end=${end}`, { headers: { "Authorization": token } });
             console.log(expenses, amount);
             document.getElementById('daily').innerHTML = `<tr><th>Date</th><th>Description</th>
             <th>Category</th><th>Expense (in ₹)</th></tr>`;
@@ -83,7 +83,7 @@ document.querySelector('#report').onclick = async (e) => {
 //     try {
 //         const month = document.getElementById('month').value;
 //         console.log(month);
-//         const { data } = await axios.get(`http://13.48.13.12:3000/user/monthlyReport?month=${month}`, { headers: { "Authorization": token } });
+//         const { data } = await axios.get(`http://13.48.13.12/user/monthlyReport?month=${month}`, { headers: { "Authorization": token } });
 //         console.log(date);
 //     }
 //     catch (err) {
@@ -95,7 +95,7 @@ document.getElementById('year').oninput = async (e) => {
     console.log(e.target);
     try {
         const year = document.getElementById('year').value;
-        const { data: { expenses, amount } } = await axios.get(`http://13.48.13.12:3000/user/annualReport?year=${year}`, { headers: { "Authorization": token } });
+        const { data: { expenses, amount } } = await axios.get(`http://13.48.13.12/user/annualReport?year=${year}`, { headers: { "Authorization": token } });
         // console.log(year, expenses[0].month, typeof(expenses[0].month));
         document.getElementById('annual').innerHTML = `<tr><th>Month</th><th>Expense (in ₹)</th></tr>`;
 
@@ -115,7 +115,7 @@ document.getElementById('year').oninput = async (e) => {
 
 document.getElementById('download').onclick = async () => {
     try {
-        const { data } = await axios.get('http://13.48.13.12:3000/user/downloadfile', { headers: { "Authorization": token } });
+        const { data } = await axios.get('http://13.48.13.12/user/downloadfile', { headers: { "Authorization": token } });
         console.log(data);
         window.print();
         const a = document.createElement('a');

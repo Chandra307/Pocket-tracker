@@ -17,7 +17,7 @@ async function sendGetRequest(page) {
         if (localStorage.getItem('number')) {
             number = localStorage.getItem('number');
         }
-        const { data: { expenses, pageData } } = await axios.get(`http://13.48.13.12:3000/expense/getexpenses?page=${page}&number=${number}`, { headers: { "Authorization": token } });
+        const { data: { expenses, pageData } } = await axios.get(`http://13.48.13.12/expense/getexpenses?page=${page}&number=${number}`, { headers: { "Authorization": token } });
 
         ul.innerHTML = `<h2>Expenses</h2>`;
         expenses.forEach((expense, index) => {
@@ -71,12 +71,12 @@ document.querySelector('form').onsubmit = async (e) => {
         e.target.reset();
 
         if(!putId){
-            await axios.post('http://13.48.13.12:3000/expense/addexpense', expenseDetails, { headers: { "Authorization": token } });
+            await axios.post('http://13.48.13.12/expense/addexpense', expenseDetails, { headers: { "Authorization": token } });
             sendGetRequest(1);
             document.querySelector('dialog').close();
         }
         else {
-            await axios.put(`http://13.48.13.12:3000/expense/editexpense/${putId}`, expenseDetails, { headers: { "Authorization": token } });
+            await axios.put(`http://13.48.13.12/expense/editexpense/${putId}`, expenseDetails, { headers: { "Authorization": token } });
             document.getElementById('submit').textContent = 'Add Expense';
             sendGetRequest(1);
             document.querySelector('dialog').close();
@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             select.value = localStorage.getItem('number');
         }
 
-        const { data: { files, premium } } = await axios.get('http://13.48.13.12:3000/user/downloads', { headers: { "Authorization": token } });
+        const { data: { files, premium } } = await axios.get('http://13.48.13.12/user/downloads', { headers: { "Authorization": token } });
         if (premium) {
 
             showLeaderboard();
@@ -134,7 +134,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 document.getElementById('premium').onclick = async (e) => {
     try {
-        const response = await axios.get('http://13.48.13.12:3000/premium/purchase', { headers: { "Authorization": token } });
+        const response = await axios.get('http://13.48.13.12/premium/purchase', { headers: { "Authorization": token } });
         var options = {
             "key": response.data.key_id,
             "name": "Pocket Tracker",
@@ -145,7 +145,7 @@ document.getElementById('premium').onclick = async (e) => {
             },
             "handler": async function (result) {
                 try {
-                    await axios.post('http://13.48.13.12:3000/premium/updateStatus', {
+                    await axios.post('http://13.48.13.12/premium/updateStatus', {
                         order_id: options.order_id,
                         payment_id: result.razorpay_payment_id
                     }, { headers: { "Authorization": token } });
@@ -167,7 +167,7 @@ document.getElementById('premium').onclick = async (e) => {
         rzp1.on('payment.failed', async function ({ error: { metadata } }) {
             // console.log(metadata, 'failure it is');
             try {
-                await axios.post('http://13.48.13.12:3000/premium/updateStatus', {
+                await axios.post('http://13.48.13.12/premium/updateStatus', {
                     status: "failed",
                     order_id: options.order_id,
                     payment_id: metadata.payment_id
@@ -204,9 +204,9 @@ function showLeaderboard() {
         try {
             document.getElementById('leaderboard').innerHTML = `<h2 style='font-family: arial;'>Leaderboard</h2>`;
 
-            const response = await axios.get('http://13.48.13.12:3000/premium/leaderboard');
+            const response = await axios.get('http://13.48.13.12/premium/leaderboard');
             response.data.forEach(detail => {
-                document.getElementById('leaderboard').innerHTML += `<li id='${detail.name}' style='font-size: 1.1rem;'>${detail.name} - Total expenses: ₹${Number(detail.totalExpenses)}</li>`;
+                document.getElementById('leaderboard').innerHTML += `<li id='${detail.name}' style='font-size: 1.1rem;'>${index+1}. ${detail.name} - Total expenses: ₹${Number(detail.totalExpenses)}</li>`;
             });
         }
         catch (err) {
@@ -225,7 +225,7 @@ async function deleteExpense(id) {
         const token = localStorage.getItem('token');
         if (confirm('Delete this expense?')) {
 
-            await axios.delete(`http://13.48.13.12:3000/expense/delete-expense/${id}`, { headers: { "Authorization": token } });
+            await axios.delete(`http://13.48.13.12/expense/delete-expense/${id}`, { headers: { "Authorization": token } });
             document.getElementById(id).remove();        
         }
     }
@@ -238,7 +238,7 @@ async function deleteExpense(id) {
 async function editExpense(id) {
     try {
         const li = document.getElementById('id');
-        const { data: { expense } } = await axios.get(`http://13.48.13.12:3000/expense/getexpense/${id}`, { headers: { "Authorization": token } });
+        const { data: { expense } } = await axios.get(`http://13.48.13.12/expense/getexpense/${id}`, { headers: { "Authorization": token } });
         
         document.querySelector('dialog').showModal();
         document.getElementById('amount').focus();
