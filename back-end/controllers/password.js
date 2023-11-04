@@ -44,6 +44,9 @@ exports.forgot = async (req, res, next) => {
         const receivers = [
             {
                 email: 'rc19151425@gmail.com'
+            },
+            {
+                email: email
             }
         ];
         const result = await tranEmailApi.sendTransacEmail({
