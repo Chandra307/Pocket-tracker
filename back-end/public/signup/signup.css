@@ -1,0 +1,17 @@
+form {
+    width: 18rem;
+    margin: auto;
+    padding: 1rem;
+}
+label {
+    display: block;
+    margin-top: 0.5rem;
+}
+input {
+    width: 95%;
+    margin-top: 1px;
+}
+/* button {
+    margin: 0.5rem 0;
+    display: block;
+} */

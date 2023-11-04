@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./signup.css">
+</head>
+
+<body>
+    <form>
+        <div class="form-group">
+            <label for="name">Enter name</label>
+            <input class="form-control" type="text" id="name" name="name" required>
+            <label for="phone">Enter phone number</label>
+            <input class="form-control" type="tel" id="phone" name="phone" required>
+            <label for="mail">Enter email</label>
+            <input class="form-control" type="email" id="mail" name="email" required>
+            <label for="password">Enter password</label>
+            <input class="form-control" type="password" id="password" name="password" minlength="6" required><br />
+            <button class="btn btn-outline-success btn-sm" type="submit">Signup</button>
+            <a class="btn btn-outline-primary btn-sm" href="../login/login.html" role="button">Existing User</a>
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"></script>
+    <script src="./signup.js"></script>
+</body>
+
+</html>

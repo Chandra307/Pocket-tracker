@@ -1,0 +1,57 @@
+.navbar {
+    min-height: 4rem;
+    background-color: #3fa349;
+}
+.navbar a:hover, a.active {
+    color: white;
+}
+div {
+    margin: auto;
+    width: fit-content;
+}
+
+table {
+    margin: 1rem auto;
+    border: 3px solid antiquewhite;
+    background-color: #f7c465;
+}
+
+#download {
+    border: 1px solid wheat;
+    border-radius: 4rem;
+    padding: 0.4rem;
+    margin-top: 1.5rem;
+    background-color: #79e8f7;
+    color: white;
+    cursor: pointer;
+}
+
+#view {
+    border: none;
+    background-color: #dce9f6;
+    /* font-size: 1.2rem; */
+    outline: none;
+}
+
+#view,
+#daily label {
+    font-size: 1.2rem;
+}
+
+#year {
+    width: fit-content;
+}
+
+td[align] {
+    position: relative;
+    right: 2rem;
+}
+#download {
+    bottom: 3rem;
+    right: 6rem;
+}
+a {
+    text-decoration: none;
+    color: #d8d4d4;
+    font-family: verdana;
+}
