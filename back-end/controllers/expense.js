@@ -54,7 +54,7 @@ exports.getExpenses = async (req, res, next) => {
             nextPage,
             limit
         }
-        const expenses = await req.user.getExpenses({ offset: (currentPage - 1) * limit, limit: limit });
+        const expenses = await req.user.getExpenses({ offset: (currentPage - 1) * limit, limit: limit, order: [['date', 'ASC']] });
         console.log('check for premiumUser', req.user.isPremiumUser, req.user.isPremiumUser === true);
         res.json({ expenses, pageData });
     }

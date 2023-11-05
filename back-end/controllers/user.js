@@ -142,7 +142,8 @@ exports.getMonthlyReport = async (req, res, next) => {
         const promise1 = req.user.getExpenses({
 
             where: { date: { [Op.substring]: `${month}%` } },
-            attributes: ['amount', 'description', 'category', 'date']
+            attributes: ['amount', 'description', 'category', 'date'],
+            order:[['date', 'ASC']]
 
         });
         const promise2 = req.user.getExpenses({
@@ -169,7 +170,8 @@ exports.getWeeklyReport = async (req, res, next) => {
         const promise1 = req.user.getExpenses({
 
             where: { date: { [Op.between]: [start, end] } },
-            attributes: ['amount', 'description', 'category', 'date']
+            attributes: ['amount', 'description', 'category', 'date'],
+            order: [['date', 'ASC']]
 
         });
         const promise2 = req.user.getExpenses({
