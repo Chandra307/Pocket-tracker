@@ -53,7 +53,7 @@ exports.forgot = async (req, res, next) => {
             sender,
             to: receivers,
             subject: `Confirmation mail to reset password`,
-            htmlContent: `<p>Click below to reset password!</p><a href='http://13.48.13.12/password/resetpassword/${uuid}'>RESET PASSWORD</a>`
+            htmlContent: `<p>Click below to reset password!</p><a href='http://16.16.66.135/password/resetpassword/${uuid}'>RESET PASSWORD</a>`
         });
         
         console.log(result);
@@ -87,7 +87,7 @@ exports.resetPassword = async (req, res, next) => {
                         newPassword: e.target.newPassword.value,
                         uuid: e.target.uuid.value
                     };
-                    const {data} = await axios.post('http://13.48.13.12/password/updatepassword',obj);
+                    const {data} = await axios.post('http://16.16.66.135/password/updatepassword',obj);
                     e.target.innerHTML = '<p>'+ data +'</p>';
                 }catch(err){
                     console.log(err);
